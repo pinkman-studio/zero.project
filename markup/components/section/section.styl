@@ -1,0 +1,34 @@
+mixinSection()
+
+  $sectionOffsetVertical = 0
+  $sectionOffsetHorizontal = 2rem
+  $sectionOffsetVerticalMobile = 0
+  $sectionOffsetHorizontalMobile = 2rem
+  $sectionWidth = 120rem
+
+  .section
+    &:last-child
+      margin-bottom 4rem
+
+
+
+  .container
+    position relative
+    padding $sectionOffsetVerticalMobile $sectionOffsetHorizontalMobile
+    height inherit
+
+
+  @media $desktop
+   .section
+      &:last-child
+        margin-bottom 8rem
+
+    .container
+      margin 0 auto
+      padding $sectionOffsetVertical $sectionOffsetHorizontal
+      width $sectionWidth
+
+
+
+
+mixinSection()

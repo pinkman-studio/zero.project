@@ -1,0 +1,38 @@
+mixin header(data = {})
+  -
+    const {
+      activeIndex = 0,
+      isSignIn = false,
+    } = data
+
+
+
+  header.header
+    +container()
+      .actions
+        a.logo(href="/") Meow
+
+        nav.profile
+          ul.profile_nav
+            if isSignIn
+              each profileMenuItem, index in profileMenu
+                li(class= index === headerProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
+                    a(href=profileMenuItem.href )!= profileMenuItem.title
+            else
+              li.signin
+                a(href="#") Войти
+
+              li.signup
+                a(href="#") Зарегистрироваться
+
+        nav.menu
+          ul.menu_nav
+            each menuItem, index in menu
+              if menuItem.isInHeader
+                - if (menuItem.isIfSignedIn && isSignIn || !menuItem.isIfSignedIn)
+                  li(class= index === activeIndex ? 'active' : '' class=menuItem.className)
+                    a(href=menuItem.href )!= menuItem.title
+
+
+
+

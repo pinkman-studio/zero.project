@@ -1,0 +1,76 @@
+// Mixins.
+
+m-nl()
+    margin 0
+    padding 0
+    text-indent 0
+    list-style none
+    list-style-position outside
+
+m-cf()
+    &:before, &:after
+        display table
+        content ""
+
+    &:after
+        clear both
+
+    .lt-ie8 &
+        zoom 1
+
+
+m-blocks-justify()
+    text-align justify
+    text-justify newspaper
+
+
+// You can add your own mixins here:
+
+p_color_40(color)
+	mix(#000, color, 40%)
+p_color_70(color)
+	mix(#000, color, 70%)
+
+animIn(duration)
+    transition all duration ease
+
+bgi()
+    background-position 50% 50%
+    background-size cover
+    background-repeat no-repeat
+
+
+anim-bounce()
+    @keyframes bounce
+        from
+            transform scale(0)
+
+        to
+            transform scale(1.01)
+
+    animation bounce 1.2s cubic-bezier(.71,.02,.46,.95) 1 .2s
+    animation-fill-mode backwards
+
+anim-bubble()
+    @keyframes bubble
+        from
+            transform scale(0)
+
+        to
+            transform scale(1.12)
+
+    animation bubble 1s cubic-bezier(.8,2.41,.26,.1) 1 .7s
+    animation-fill-mode backwards
+    animation bubble 1.4s cubic-bezier(.92,2.21,0.29,.67) 1 .2s
+    animation-fill-mode backwards
+
+anim-jump()
+    @keyframes jump
+        0%
+            transform translatey(-20%)
+        50%
+            transform translatey(0%)
+        100%
+            transform translatey(-20%)
+    animation jump 1s cubic-bezier(.65,-0.86,.69,.64) infinite
+    animation-fill-mode backwards

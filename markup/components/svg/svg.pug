@@ -1,0 +1,9 @@
+mixin svg(data)
+	-
+		const {
+			iconName,
+			className,
+			iconWidth,
+			iconHeight,
+		} = data;
+	!= pugHelpers.Icon.call(locals, {iconName, className, iconWidth, iconHeight})

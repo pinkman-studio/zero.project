@@ -1,0 +1,16 @@
+mixin debug(data = {})
+  -
+    const {
+
+    } = data;
+
+  .debug-wrapper
+    .debug-service
+      a(href="/00-contents.html") Карта сайта
+      br
+      a.js-toggle-debug-outline(href="#") Outline
+    .debug(id="debug")
+      +container({className: 'debug-container'})
+        .debug-content
+          - for (var i = 0; i < 12; i++)
+            div

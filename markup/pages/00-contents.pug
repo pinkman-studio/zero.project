@@ -1,0 +1,35 @@
+//- pageTitle: Карта сайта
+//- date: 23.05.2018
+//- status: done
+
+extends ../layouts/layout.pug
+
+append vars
+  - pageTitle = 'Карта сайта'
+  - headerIsSignIn = true;
+
+block content
+  +section()
+    .table-of-contents
+      h1 Карта сайта
+      table
+        -
+          const pages = __pages.sort((a, b) => {
+            return a.date.split('.').join("") - b.date.split('.').join("")
+          })
+        each page, index in pages
+          tr
+            td!= index
+            td
+              a(href=page.href)!= page.title !== 'null' ? page.title : page.name
+            td
+              div!= page.date !== 'null' ? page.date : ''
+            td(class=`${page.status !== 'null' ? page.status : ''}`)
+              div!= page.status !== 'null' ? page.status : ''
+
+
+      .legend
+        .status
+          .done Done
+          .wip Work in progress
+          .wait Ожидает

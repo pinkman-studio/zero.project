@@ -1,0 +1,107 @@
+mixinDebug()
+  .debug-wrapper
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 0
+    z-index 1000000
+    display none
+    .debug-service
+      position absolute
+      top 0
+      right 0
+      padding 2rem
+      background rgba(#000, 0.5)
+      font-size 1.2rem
+      a
+        color $white
+        text-decoration underline
+    .is-debug &
+      display block
+  #debug
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+    pointer-events none
+
+
+    .debug-container
+      box-shadow inset -4rem 0 0 -2rem rgba(#00ffff,0.2), inset 4rem 0 0 -2rem rgba(#00ffff,0.2)
+
+
+
+
+
+    .debug-content
+      position absolute
+      top 0
+      left 2rem
+      display grid
+      grid-template-columns repeat(12, 1fr)
+      grid-auto-rows minmax(100%, auto)
+      grid-column-gap 4rem
+      width 116rem
+      height 100%
+      background transparent
+      padding 0
+
+      div
+        outline 1px solid #00dddd
+        margin 0
+
+      @media $mobile
+        width calc(100% - 4rem)
+        grid-template-columns repeat(6, 1fr)
+        grid-auto-rows minmax(100%, auto)
+        grid-column-gap 2rem
+        div:nth-child(7),
+        div:nth-child(8),
+        div:nth-child(9),
+        div:nth-child(10),
+        div:nth-child(11),
+        div:nth-child(12)
+          display none
+
+
+  .is-debug-outline
+    * { outline: 1px dotted rgba(red, 0.5) }
+    * * { outline: 1px dotted rgba(green, 0.5) }
+    * * * { outline: 1px dotted rgba(orange, 0.5) }
+    * * * * { outline: 1px dotted rgba(blue, 0.5) }
+    * * * * * { outline: 1px solid rgba(red, 0.5) }
+    * * * * * * { outline: 1px solid rgba(green, 0.5) }
+    * * * * * * * { outline: 1px solid rgba(orange, 0.5) }
+    * * * * * * * * { outline: 1px solid rgba(blue, 0.5) }
+
+
+  .table-of-contents
+    margin 6rem
+    table
+      width 100%
+      margin-top 2rem
+      border 1px solid #ccc
+      tr
+        td
+          padding 1rem
+          background rgba(#000, 0.01)
+          font-size 2rem
+          border-top 1px solid #ccc
+      a
+        color $blue!important
+        text-decoration underline
+
+    .done
+      background $green
+    .wait
+      background $gray_bb
+    .wip
+      background $orange
+
+
+
+
+mixinDebug()

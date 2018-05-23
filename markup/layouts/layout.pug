@@ -1,0 +1,143 @@
+include _head.pug
+include _components.pug
+
+
+block vars
+  -
+    var siteTitle = 'Giga Photo';
+    var companyName = siteTitle;
+
+    var pageTitle = '';
+    var pageClass = '';
+
+    var headerActiveIndex = 0;
+    var headerProfileActiveIndex = -1;
+    var headerIsSignIn = true;
+    var breadcrumbs = [];
+
+-
+  const menu = [
+    {
+      title: 'Giga Photo AWARDS',
+      href: '/award.html',
+      isIfSignedIn: true,
+      isInHeader: true,
+      isInFooter: false,
+      className: 'award',
+    },
+    {
+      title: 'Каталог',
+      href: '/catalog.html',
+      isIfSignin: false,
+      isInHeader: true,
+      isInFooter: true,
+
+    },
+    {
+      title: 'Квесты',
+      href: '/challenges.html',
+      isIfSignin: false,
+      isInHeader: true,
+      isInFooter: true,
+    },
+    {
+      title: 'Мероприятия',
+      href: '/events.html',
+      isIfSignin: false,
+      isInHeader: true,
+      isInFooter: true,
+    },
+    {
+      title: 'О проекте',
+      href: '/about.html',
+      isIfSignin: false,
+      isInHeader: true,
+      isInFooter: true,
+    },
+    {
+      title: 'Партнёрам',
+      href: '/partners.html',
+      isIfSignin: false,
+      isInHeader: true,
+      isInFooter: true,
+    },
+    {
+      title: 'FAQ',
+      href: '/faq.html',
+      isIfSignin: false,
+      isInHeader: false,
+      isInFooter: true,
+    },
+  ];
+
+  const profileMenu = [
+    {
+      title: 'Голосовать',
+      href: '/profile-votes.html',
+      className: '',
+    },
+    {
+      title: 'Участвую',
+      href: '/profile-events.html',
+      className: '',
+    },
+    {
+      title: 'Мой профиль',
+      href: '/profile.html',
+      className: '',
+    },
+    {
+      title: 'Выйти',
+      href: '/#.html',
+      className: 'signout',
+    },
+  ]
+
+doctype html
+html.no-js(lang='ru')
+  head
+    block head
+      +head({
+        siteTitle: siteTitle,
+        pageTitle: pageTitle
+      })
+
+
+  body.page(class=pageClass)
+    |%=symbols=%
+
+
+    .page__header
+      block header
+        +header({
+          activeIndex: headerActiveIndex,
+          isSignIn: headerIsSignIn,
+        })
+
+    main.page__content
+      block content
+        div hello
+        //- content here
+
+    //- +popup()
+      block popup
+
+    block footer
+      .page__footer
+        +footer({
+          activeIndex: headerActiveIndex,
+          isSignIn: headerIsSignIn,
+        })
+
+    +debug()
+
+
+    script(src='%=static=%js/separate-js/svg4everybody.min.js')
+    script svg4everybody();
+
+    //- Main scripts. You can replace it, but I recommend you to leave it here
+    script(src='%=static=%js/separate-js/jquery.js')
+    script(src='%=static=%js/vendor%=min=%.js')
+    script(src='%=static=%js/main%=hash=%%=min=%.js')
+
+    block script

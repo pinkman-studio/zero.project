@@ -1,0 +1,15 @@
+//- pageTitle: Страница не найдена
+//- date: 23.05.2018
+//- status: done
+
+extends ../layouts/layout.pug
+
+include ../components/page-404/page-404.pug
+
+
+append vars
+  - pageClass = 'page--404';
+
+block content
+  +page-404()
+

@@ -1,0 +1,15 @@
+//- pageTitle: Главная
+//- date: 23.05.30
+//- status: wait
+
+extends ../layouts/layout.pug
+
+append vars
+  - pageTitle = 'Главная'
+  - headerActiveIndex = -1;
+
+
+block content
+  +section()
+    h1 Главная страница
+

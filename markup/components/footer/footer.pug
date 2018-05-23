@@ -1,0 +1,24 @@
+mixin footer(data= {})
+  -
+    const {
+      activeIndex = 0,
+      isSignIn = false,
+    } = data
+
+  footer.footer(class=className)
+    +container()
+      nav.menu
+        ul.menu_nav
+          each menuItem, index in menu
+            if menuItem.isInFooter
+              - if (menuItem.isIfSignedIn && isSignIn || !menuItem.isIfSignedIn)
+                li(class= index === activeIndex ? 'active' : '' class=menuItem.className)
+                  a(href=menuItem.href )!= menuItem.title
+      .bottom
+        .copy!=`© 2018 ${companyName}`
+        a.agreement(href="#") Политика конфиденциальности
+      .create
+        a(href="http://pink-man.ru" target="_blank") Сайт сделал –
+          +svg({iconName: 'logo-pinkman'})
+
+

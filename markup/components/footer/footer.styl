@@ -1,0 +1,132 @@
+mixinFooter()
+  .footer
+    background $black
+    padding-top 4rem
+    color $white
+
+    a
+      color $white
+      transition color 200ms ease-out
+
+    .menu
+      .menu_nav
+        li
+          a
+            color rgba($white, 1)
+            font-weight $medium
+            font-size: 1.4rem;
+            text-transform uppercase
+            transition color 200ms ease-out
+            &:hover
+              color rgba($white, 0.75)
+          &.active
+            a
+              color rgba($white, 0.4)
+
+    .bottom
+        font-weight $regular
+        color rgba($white, 0.4)
+        .agreement
+          color rgba($white, 0.4)
+
+
+  @media $mobile
+    .footer
+      .menu
+        $menuItemMB = 1.3rem
+        margin-bottom 4rem - $menuItemMB
+        width 27rem
+
+        .menu_nav
+          column-count 2
+          column-gap 2rem
+
+          li
+            margin-bottom $menuItemMB
+
+      .social
+        margin-bottom 2rem
+
+      .bottom
+        font-size 1.4rem
+        line-height 1.6
+
+      .create
+        margin-top 2rem
+        padding 2rem 0
+        position relative
+        svg
+          display inline-block
+          width 6.9rem
+          height 1rem
+
+        &:before
+          content ''
+          position absolute
+          top 0
+          left 50%
+          width 100vw
+          height 0
+          border-top 1px solid rgba($white, 0.2)
+          transform translateX(-50%)
+
+  @media $desktop
+    .footer
+      padding-bottom 3rem
+
+      .menu
+        .menu_nav
+          li
+            display inline-block
+            line-height 4rem
+            + li
+              margin-left 4rem
+
+      .bottom
+        position relative
+        font-size 1.6rem
+        margin-top 7rem
+
+        .copy
+          display inline-block
+
+        .agreement
+          color rgba($white, 0.4)
+          position relative
+          display inline-block
+          margin-left 1.2rem
+          padding-left 1.6rem
+
+          &:hover
+            color rgba($white, 1)
+
+          &:before
+            content ''
+            width 1px
+            height 1.4rem
+            background rgba($white, 0.5)
+            position absolute
+            left 0
+            top 0.3rem
+
+      .social
+        position absolute
+        right 2rem
+        top 0
+
+      .create
+        position absolute
+        bottom 0
+        right 2rem
+        a
+          svg
+            display inline-block
+            width 8.3rem
+            height 1.2rem
+            position relative
+            top 0.1rem
+          &:hover
+            color rgba($white, 0.75)
+
+
+mixinFooter()

@@ -1,0 +1,21 @@
+mixin container(data = {})
+  -
+    const {
+      className = ''
+    } = data;
+  .container(class=className)
+    block
+
+mixin section(data = {})
+  -
+    const {
+      className = '',
+      containerClassName = ''
+    } = data;
+
+  section.section(class=className)&attributes(attributes)
+    +container({className: containerClassName})
+      block
+
+
+
