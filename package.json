@@ -24,8 +24,6 @@
 		"babel-preset-stage-0": "^6.24.1",
 		"emitty": "^1.4.1",
 		"eslint": "^4.19.1",
-		"eslint-config-airbnb-base": "^12.1.0",
-		"eslint-plugin-import": "^2.11.0",
 		"gulp": "^3.9.1",
 		"gulp-debug": "^3.1.0",
 		"gulp-wait": "0.0.2"
