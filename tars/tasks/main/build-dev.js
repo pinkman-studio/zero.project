@@ -25,9 +25,10 @@ module.exports = () => {
                 'images:move-content-img', 'images:move-plugins-img', 'images:move-general-img',
                 'js:move-separate'
             ],
-            'html:compile-templates',
-            'js:processing',
-
+            [
+                'js:processing',
+                'html:compile-templates'
+            ],
             cb
         );
     });

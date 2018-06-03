@@ -233,8 +233,15 @@ module.exports = () => {
 					pathToFileToRename.extname = '.html';
 				}))
 				.pipe(gulp.dest('./dev/'))
-
-			}).catch( (error) => console.error(error) );
+				.on('end', () => {
+					if (!compileError) {
+						browserSync.reload();
+						notifier.success('Templates\'ve been compiled', {
+							notStream: true
+						});
+					}
+				});
+			}).catch(console.error);
 		});
 
 	});

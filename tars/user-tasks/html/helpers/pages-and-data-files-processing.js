@@ -32,6 +32,10 @@ module.exports = function pagesAndDataFilesProcessing() {
         let fileContent = file.contents.toString();
         let namePrefix = '';
 
+        if (pathParts.length > 2) {
+            namePrefix = pathParts.slice(0, -2).join('_') + '_';
+        }
+
         let statusRegExp = /(.*\/\/- status:\s+)(.*)(\n.*)/;
         let dateRegExp = /(.*\/\/- date:\s+)(.*)(\n.*)/;
         let titleRegExp = /(.*\/\/- pageTitle:\s+)(.*)(\n.*)/;
@@ -39,22 +43,18 @@ module.exports = function pagesAndDataFilesProcessing() {
         let date = null;
         let status = null;
 
-        fileContent.replace(titleRegExp, (match, start, content, end) => {
-          title = content || null;
-        });
-        fileContent.replace(dateRegExp, (match, start, content, end) => {
-          date = content || null;
-        });
         fileContent.replace(statusRegExp, (match, start, content, end) => {
           status = content || null;
         });
 
+        fileContent.replace(dateRegExp, (match, start, content, end) => {
+          date = content || null;
+        });
 
+        fileContent.replace(titleRegExp, (match, start, content, end) => {
+          title = content || null;
+        });
 
-
-        if (pathParts.length > 2) {
-            namePrefix = pathParts.slice(0, -2).join('_') + '_';
-        }
 
         switch (fileName) {
             case 'data.js':
@@ -97,11 +97,11 @@ module.exports = function pagesAndDataFilesProcessing() {
             }
 
             pagesListFileContent += `{
+                name: '${pageNameArray[index]}',
+                href: '${value}',
                 title: '${titleArray[index]}',
                 status: '${statusArray[index]}',
-                date: '${dateArray[index]}',
-                name: '${pageNameArray[index]}',
-                href: '${value}'
+                date: '${dateArray[index]}'
              }`;
         });
         pagesListFileContent += ']';

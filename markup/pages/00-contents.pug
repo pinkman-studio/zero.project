@@ -14,14 +14,21 @@ block content
       h1 Карта сайта
       table
         -
-          const pages = __pages.sort((a, b) => {
-            return a.date.split('.').join("") - b.date.split('.').join("")
+          const pages = __pages.sort((a = {date:null}, b = {date:null}) => {
+            let {
+              date : dateA = '0'
+            } = a;
+
+            let {
+              date: dateB = '0'
+            } = b
+            return dateA.split('.').join("") - dateB.split('.').join("");
           })
         each page, index in pages
           tr
             td!= index
             td
-              a(href=page.href)!= page.title !== 'null' ? page.title : page.name
+              a(href=page.href)!= page.title !== undefined && page.title !== 'null' ? page.title : page.name
             td
               div!= page.date !== 'null' ? page.date : ''
             td(class=`${page.status !== 'null' ? page.status : ''}`)
