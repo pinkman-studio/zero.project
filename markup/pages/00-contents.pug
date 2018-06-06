@@ -10,21 +10,38 @@ append vars
 
 block content
   +section()
+    -
+      const pages = __pages.sort((a = {date:null}, b = {date:null}) => {
+        let {
+          date : dateA = '0'
+        } = a;
+
+        let {
+          date: dateB = '0'
+        } = b
+        return dateA.split('.').join("") - dateB.split('.').join("");
+      })
+      let waitCount = 0;
+      let wipCount = 0;
+      let doneCount = 0;
+
+
     .table-of-contents
       h1 Карта сайта
       table
-        -
-          const pages = __pages.sort((a = {date:null}, b = {date:null}) => {
-            let {
-              date : dateA = '0'
-            } = a;
-
-            let {
-              date: dateB = '0'
-            } = b
-            return dateA.split('.').join("") - dateB.split('.').join("");
-          })
         each page, index in pages
+          -
+            switch(page.status) {
+              case 'wip':
+                wipCount++;
+              break;
+              case 'wait':
+                waitCount++;
+              break;
+              case 'done':
+                doneCount++;
+              break;
+            }
           tr
             td!= index
             td
@@ -37,6 +54,7 @@ block content
 
       .legend
         .status
-          .done Done
-          .wip Work in progress
-          .wait Ожидает
+          .done Готово (#{doneCount})
+          .wip В разработке (#{wipCount})
+          .wait Ожидает (#{waitCount})
+          .all Всего (#{pages.length})
