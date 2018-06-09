@@ -5,7 +5,7 @@
     "autoprefixerConfig": ["> 1%", "last 2 versions", "Firefox ESR", "android 4"],
 
     "browserSync": {
-        "startPath": "/00-contents.html",
+        "startPath": "/contents.html",
         "server": {
             "baseDir": "./dev"
         },
