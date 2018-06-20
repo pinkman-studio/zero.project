@@ -33,7 +33,9 @@
     "build:tars": "tars build -m && git add . && git commit -m 'build'",
     "build:push": "git push origin build",
     "build": "npm run build:checkout && npm run build:tars && npm run build:push && git checkout master",
-    "dev": "tars dev -l"
+    "dev": "tars dev -l",
+    "comp": "tars add-component -s component",
+    "page": "tars add-page"
   },
   "author": "",
   "license": "ISC"
