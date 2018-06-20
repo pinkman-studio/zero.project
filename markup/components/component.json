@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+        "name": "__componentName__.__templateExtension__",
+        "content": "mixin __componentName__(data = {})\n  -\n    const {\n\n    } = data;\n\n  .__componentName__\n"
+    }, {
+        "name": "__componentName__.__cssExtension__",
+        "content": "mixin__componentName__()\n  .__componentName__\n    //-\nmixin__componentName__()\n"
+    }, {
+        "name": "__componentName__.js",
+        "content": "export default function () {\n\n}\n"
+    }
+  ]
+}

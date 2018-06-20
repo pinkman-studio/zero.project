@@ -24,6 +24,7 @@ module.exports = function pagesAndDataFilesProcessing() {
     let titleArray = [];
     let statusArray = [];
     let dateArray = [];
+    let categoryArray = [];
 
     return through2.obj(function (file, enc, callback) {
         const parsedFileRelativePath = path.parse(file.relative);
@@ -39,9 +40,11 @@ module.exports = function pagesAndDataFilesProcessing() {
         let statusRegExp = /(.*\/\/- status:\s+)(.*)(\n.*)/;
         let dateRegExp = /(.*\/\/- date:\s+)(.*)(\n.*)/;
         let titleRegExp = /(.*\/\/- pageTitle:\s+)(.*)(\n.*)/;
+        let categoryRegExp = /(.*\/\/- pageCategory:\s+)(.*)(\n.*)/;
         let title = null;
         let date = null;
         let status = null;
+        let category = null;
 
         fileContent.replace(statusRegExp, (match, start, content, end) => {
           status = content || null;
@@ -55,6 +58,9 @@ module.exports = function pagesAndDataFilesProcessing() {
           title = content || null;
         });
 
+        fileContent.replace(categoryRegExp, (match, start, content, end) => {
+          category = content || null;
+        });
 
         switch (fileName) {
             case 'data.js':
@@ -84,6 +90,7 @@ module.exports = function pagesAndDataFilesProcessing() {
                 titleArray.push(title);
                 dateArray.push(date);
                 statusArray.push(status);
+                categoryArray.push(category);
                 break;
         }
 
@@ -101,7 +108,8 @@ module.exports = function pagesAndDataFilesProcessing() {
                 href: '${value}',
                 title: '${titleArray[index]}',
                 status: '${statusArray[index]}',
-                date: '${dateArray[index]}'
+                date: '${dateArray[index]}',
+                category: '${categoryArray[index]}'
              }`;
         });
         pagesListFileContent += ']';

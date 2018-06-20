@@ -1,6 +1,7 @@
 //- pageTitle: Карта сайта
-//- date: 23.05.2018
-//- status: done
+//- pageCategory: hidden
+//- date: 12.12.2018
+//- status: service-done
 
 extends ../layouts/layout.pug
 
@@ -24,32 +25,55 @@ block content
       let waitCount = 0;
       let wipCount = 0;
       let doneCount = 0;
+      let serviceCount = 0;
+      let categories = {}
+
+      pages.forEach((page, index) => {
+        switch(page.status) {
+          case 'wip':
+            wipCount++;
+          break;
+          case 'wait':
+            waitCount++;
+          break;
+          case 'done':
+            doneCount++;
+          break;
+          case 'service-wip':
+          case 'service-done':
+            serviceCount++;
+          break;
+        }
+
+        if (categories[page.category] === undefined) {
+          categories[page.category] = [];
+        };
+        categories[page.category].push(page);
+
+      });
+
+      const categoriesArray = Object.keys(categories);
+
+
 
 
     .table-of-contents
       h1 Карта сайта
-      table
-        each page, index in pages
-          -
-            switch(page.status) {
-              case 'wip':
-                wipCount++;
-              break;
-              case 'wait':
-                waitCount++;
-              break;
-              case 'done':
-                doneCount++;
-              break;
-            }
-          tr
-            td!= index
-            td
-              a(href=page.href)!= page.title !== undefined && page.title !== 'null' ? page.title : page.name
-            td
-              div!= page.date !== 'null' ? page.date : ''
-            td(class=`${page.status !== 'null' ? page.status : ''}`)
-              div!= page.status !== 'null' ? page.status : ''
+
+      .contents-wrapper
+        - for(let index = 0; index < categoriesArray.length; index++)
+          if categoriesArray[index] !== 'hidden'
+            if categoriesArray[index] !== 'null'
+              h2= categoriesArray[index]
+            .contents-row
+              each page, i in categories[categoriesArray[index]]
+                .contents-col!= i + 1
+                .contents-col
+                  a(href=page.href)!= page.title !== undefined && page.title !== 'null' ? page.title : page.name
+                .contents-col
+                  div!= page.date !== 'null' ? page.date : ''
+                .contents-col(class=`${page.status !== 'null' ? page.status : ''}`)
+                  div!= page.status !== 'null' ? page.status : ''
 
 
       .legend
@@ -57,4 +81,7 @@ block content
           .done Готово (#{doneCount})
           .wip В разработке (#{wipCount})
           .wait Ожидает (#{waitCount})
-          .all Всего (#{pages.length})
+          .all Всего (#{pages.length - serviceCount})
+          .all Осталось (#{pages.length - doneCount - serviceCount})
+          .all UI (#{serviceCount})
+

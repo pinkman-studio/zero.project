@@ -76,23 +76,44 @@ mixinDebug()
     * * * * * * { outline: 1px solid rgba(green, 0.5) }
     * * * * * * * { outline: 1px solid rgba(orange, 0.5) }
     * * * * * * * * { outline: 1px solid rgba(blue, 0.5) }
+    * * * * * * * * * { outline: 1px solid rgba(aliceblue, 0.5) }
+    * * * * * * * * * * { outline: 1px solid rgba(antiquewhite, 0.5) }
+    * * * * * * * * * * * { outline: 1px solid rgba(aqua, 0.5) }
+    * * * * * * * * * * * * { outline: 1px solid rgba(aquamarine, 0.5) }
+    * * * * * * * * * * * * * { outline: 1px solid rgba(blueviolet , 0.5) }
+    * * * * * * * * * * * * * * { outline: 1px solid rgba(brown, 0.5) }
+    * * * * * * * * * * * * * * * { outline: 1px solid rgba(burlywood, 0.5) }
+    * * * * * * * * * * * * * * * * { outline: 1px solid rgba(cadetblue, 0.5) }
 
 
   .table-of-contents
     margin 6rem
-    table
+    .contents-wrapper
       width 100%
       margin-top 2rem
-      border 1px solid #ccc
-      tr
-        td
+
+      h2
+        font-size 3rem
+        margin 3rem 0
+      .contents-row
+        display grid
+        grid-template-columns 4rem 1fr 15rem 10rem
+        grid-auto-rows 5rem
+        grid-column-gap 0rem
+        border-bottom 1px solid #ccc
+        border-left 1px solid #ccc
+        border-right 1px solid #ccc
+
+        .contents-col
+          text-align left
           padding 1rem
-          background rgba(#000, 0.01)
+          //background rgba(#000, 0.01)
           font-size 2rem
           border-top 1px solid #ccc
-      a
-        color $blue!important
-        text-decoration underline
+        a
+          color $blue!important
+          text-decoration underline
+
     .legend
       margin-top 1rem
       .status
@@ -110,8 +131,34 @@ mixinDebug()
       background $gray_bb
     .wip
       background $orange
+    .service-wip
+      background $gold
+    .service-done
+      background $blue
 
 
 
+  .ui
+    h1
+      margin-bottom 5rem
+    h2
+      margin-top 4rem
+      margin-bottom 2rem
+      padding-bottom 2rem
+      border-bottom 1px solid rgba($black, 0.3)
 
+    h3
+      margin 2rem 0 2rem 0rem
+
+    h4
+      margin 2rem 0 2rem 0rem
+
+    .descr
+      font-size 1.4rem
+      color $gray
+      padding 1rem 0 2rem
+      p
+        font-size 1.2rem
+      p + p
+        margin-top 0.5rem
 mixinDebug()
