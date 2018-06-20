@@ -1,40 +1,40 @@
 {
-	"name": "gigaphoto.ru",
-	"version": "1.0.0",
-	"description": "",
-	"main": "gulpfile.js",
-	"directories": {},
-	"dependencies": {
-		"babel-polyfill": "^6.26.0",
-		"babel-preset-es2015": "^6.24.1",
-		"babel-runtime": "^6.26.0",
-		"jquery": "^3.3.1"
-	},
-	"devDependencies": {
-		"babel-core": "^6.26.0",
-		"babel-loader": "^6.4.1",
-		"babel-plugin-syntax-dynamic-import": "^6.18.0",
-		"babel-plugin-transform-async-to-generator": "^6.24.1",
-		"babel-plugin-transform-decorators-legacy": "^1.3.4",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-plugin-transform-regenerator": "^6.26.0",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-preset-es2015": "^6.24.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"emitty": "^1.4.1",
-		"eslint": "^4.19.1",
-		"gulp": "^3.9.1",
-		"gulp-debug": "^3.1.0",
-		"gulp-wait": "0.0.2"
-	},
-	"scripts": {
-		"build:checkout": "git push && git checkout build && git merge origin/master --no-edit && npm i",
-		"build:tars": "tars build -m && git add . && git commit -m 'build'",
-		"build:push": "git push origin build",
+  "name": "gigaphoto.ru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {},
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "emitty": "^1.4.1",
+    "eslint": "^4.19.1",
+    "gulp": "3.9.1",
+    "gulp-debug": "^3.1.0",
+    "gulp-wait": "0.0.2"
+  },
+  "scripts": {
+    "build:checkout": "git push && git checkout build && git merge origin/master --no-edit && npm i",
+    "build:tars": "tars build -m && git add . && git commit -m 'build'",
+    "build:push": "git push origin build",
     "build": "npm run build:checkout && npm run build:tars && npm run build:push && git checkout master",
     "dev": "tars dev -l"
-	},
-	"author": "",
-	"license": "ISC"
+  },
+  "author": "",
+  "license": "ISC"
 }
