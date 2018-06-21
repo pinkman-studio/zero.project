@@ -1,8 +1,7 @@
 mixin header(data = {})
   -
     const {
-      activeIndex = 0,
-      isSignIn = false,
+
     } = data
 
 
@@ -10,13 +9,13 @@ mixin header(data = {})
   header.header
     +container()
       .actions
-        a.logo(href="/") Meow
+        a.logo(href="/")= SITE_TITLE
 
         nav.profile
           ul.profile_nav
-            if isSignIn
-              each profileMenuItem, index in profileMenu
-                li(class= index === headerProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
+            if DEFS.isSigned
+              each profileMenuItem, index in MENU_PROFILE
+                li(class= index === DEFS.menuProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
                     a(href=profileMenuItem.href )!= profileMenuItem.title
             else
               li.signin
@@ -27,11 +26,10 @@ mixin header(data = {})
 
         nav.menu
           ul.menu_nav
-            each menuItem, index in menu
+            each menuItem, index in MENU
               if menuItem.isInHeader
-                - if (menuItem.isIfSignedIn && isSignIn || !menuItem.isIfSignedIn)
-                  li(class= index === activeIndex ? 'active' : '' class=menuItem.className)
-                    a(href=menuItem.href )!= menuItem.title
+                li(class= index === DEFS.menuActiveIndex ? 'active' : '' class=menuItem.className)
+                  a(href=menuItem.href )!= menuItem.title
 
 
 

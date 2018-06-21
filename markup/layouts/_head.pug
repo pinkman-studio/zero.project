@@ -1,17 +1,13 @@
 mixin head(data = {})
 
   -
-    const {
-      pageTitle = '',
-      siteTitle = 'Giga Photo',
-      isSocialMetaTags = false,
-    } = data;
+    const {} = data;
 
   meta(charset="utf-8")
   meta(http-equiv="x-ua-compatible" content="ie=edge")
-  title!= pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle
-  meta(content="" name="description")
-  meta(content="" name="keywords")
+  title!= DEFS.pageTitle ? `${DEFS.pageTitle} | ${SITE_TITLE}` : SITE_TITLE
+  meta(content=DEFS.description name="description")
+  meta(content=DEFS.keywords name="keywords")
   meta(name="viewport" content="width=device-width initial-scale=1.0")
   meta(content="telephone=no" name="format-detection")
   //- This make sence for mobile browsers. It means that content has been optimized for mobile browsers
@@ -22,8 +18,7 @@ mixin head(data = {})
   link(href="%=static=%css/main%=hash=%%=min=%.css" rel="stylesheet" type="text/css")
 
   if isSocialMetaTags
-    meta(property="og:title" content="#{data.title}")
-    meta(property="og:title" content="")
+    meta(property="og:title" content=DEFS.pageTitle)
     meta(property="og:url" content="")
     meta(property="og:description" content="")
     meta(property="og:image" content="")

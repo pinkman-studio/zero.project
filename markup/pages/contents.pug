@@ -6,8 +6,10 @@
 extends ../layouts/layout.pug
 
 append vars
-  - pageTitle = 'Карта сайта'
-  - headerIsSignIn = true;
+  -
+    DEFS.pageTitle = 'Карта сайта';
+    DEFS.isSigned = true;
+    DEFS.menuActiveIndex = 1;
 
 block content
   +section()
@@ -58,7 +60,7 @@ block content
 
 
     .table-of-contents
-      h1 Карта сайта
+      h1= `${DEFS.pageTitle} | ${SITE_TITLE} `
 
       .contents-wrapper
         - for(let index = 0; index < categoriesArray.length; index++)

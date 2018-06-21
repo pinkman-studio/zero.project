@@ -6,8 +6,10 @@
 extends ../layouts/layout.pug
 
 append vars
-  - pageTitle = 'Главная'
-  - headerActiveIndex = -1;
+  -
+    DEFS.pageTitle = 'Главная';
+    DEFS.isSigned = false;
+    DEFS.menuActiveIndex = 0;
 
 
 block content

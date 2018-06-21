@@ -1,118 +1,28 @@
 include _head.pug
 include _components.pug
-
+include _constants.pug
 
 block vars
-  -
-    var siteTitle = 'Giga Photo';
-    var companyName = siteTitle;
+  //- defaults in _constants.pug
+  //- example
+  //- -
+  //-   DEFS.pageTitle = 'Главная';
 
-    var pageTitle = '';
-    var pageClass = '';
-
-    var headerActiveIndex = 0;
-    var headerProfileActiveIndex = -1;
-    var headerIsSignIn = true;
-    var breadcrumbs = [];
-
--
-  const menu = [
-    {
-      title: 'Giga Photo AWARDS',
-      href: '/award.html',
-      isIfSignedIn: true,
-      isInHeader: true,
-      isInFooter: false,
-      className: 'award',
-    },
-    {
-      title: 'Каталог',
-      href: '/catalog.html',
-      isIfSignin: false,
-      isInHeader: true,
-      isInFooter: true,
-
-    },
-    {
-      title: 'Квесты',
-      href: '/challenges.html',
-      isIfSignin: false,
-      isInHeader: true,
-      isInFooter: true,
-    },
-    {
-      title: 'Мероприятия',
-      href: '/events.html',
-      isIfSignin: false,
-      isInHeader: true,
-      isInFooter: true,
-    },
-    {
-      title: 'О проекте',
-      href: '/about.html',
-      isIfSignin: false,
-      isInHeader: true,
-      isInFooter: true,
-    },
-    {
-      title: 'Партнёрам',
-      href: '/partners.html',
-      isIfSignin: false,
-      isInHeader: true,
-      isInFooter: true,
-    },
-    {
-      title: 'FAQ',
-      href: '/faq.html',
-      isIfSignin: false,
-      isInHeader: false,
-      isInFooter: true,
-    },
-  ];
-
-  const profileMenu = [
-    {
-      title: 'Голосовать',
-      href: '/profile-votes.html',
-      className: '',
-    },
-    {
-      title: 'Участвую',
-      href: '/profile-events.html',
-      className: '',
-    },
-    {
-      title: 'Мой профиль',
-      href: '/profile.html',
-      className: '',
-    },
-    {
-      title: 'Выйти',
-      href: '/#.html',
-      className: 'signout',
-    },
-  ]
 
 doctype html
 html.no-js(lang='ru')
   head
     block head
-      +head({
-        siteTitle: siteTitle,
-        pageTitle: pageTitle
-      })
+      +head()
 
 
-  body.page(class=pageClass)
+  body.page(class=DEFS.pageClass)
     |%=symbols=%
 
 
     .page__header
       block header
-        +header({
-          activeIndex: headerActiveIndex,
-          isSignIn: headerIsSignIn,
-        })
+        +header()
 
     main.page__content
       block content
@@ -124,10 +34,7 @@ html.no-js(lang='ru')
 
     block footer
       .page__footer
-        +footer({
-          activeIndex: headerActiveIndex,
-          isSignIn: headerIsSignIn,
-        })
+        +footer()
 
     +debug()
 

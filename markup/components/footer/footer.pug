@@ -1,21 +1,16 @@
 mixin footer(data= {})
-  -
-    const {
-      activeIndex = 0,
-      isSignIn = false,
-    } = data
 
   footer.footer(class=className)
     +container()
       nav.menu
         ul.menu_nav
-          each menuItem, index in menu
+          each menuItem, index in MENU
             if menuItem.isInFooter
-              - if (menuItem.isIfSignedIn && isSignIn || !menuItem.isIfSignedIn)
-                li(class= index === activeIndex ? 'active' : '' class=menuItem.className)
+              - if (menuItem.isIfSignedIn && DEFS.isSigned || !menuItem.isIfSignedIn)
+                li(class= index === DEFS.menuActiveIndex ? 'active' : '' class=menuItem.className)
                   a(href=menuItem.href )!= menuItem.title
       .bottom
-        .copy!=`© 2018 ${companyName}`
+        .copy!=`© 2018 ${COMPANY_NAME}`
         a.agreement(href="#") Политика конфиденциальности
       .create
         a(href="http://pink-man.ru" target="_blank") Сайт сделал –

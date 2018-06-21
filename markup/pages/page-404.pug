@@ -7,9 +7,12 @@ extends ../layouts/layout.pug
 
 include ../components/page-404/page-404.pug
 
-
 append vars
-  - pageClass = 'page--404';
+  -
+    DEFS.pageTitle = 'Страница не найдена';
+    DEFS.isSigned = true;
+    DEFS.menuActiveIndex = 3;
+    DEFS.pageClass = 'page--404';
 
 block content
   +page-404()
