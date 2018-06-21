@@ -1,4 +1,15 @@
 mixin footer(data= {})
+  -
+    // Globals: COMPANY_NAME, DEFS, MENU
+
+    const {
+      menuActiveIndex,
+      isSigned
+    } = DEFS;
+
+    const {
+      className = ''
+    } = data;
 
   footer.footer(class=className)
     +container()
@@ -6,8 +17,8 @@ mixin footer(data= {})
         ul.menu_nav
           each menuItem, index in MENU
             if menuItem.isInFooter
-              - if (menuItem.isIfSignedIn && DEFS.isSigned || !menuItem.isIfSignedIn)
-                li(class= index === DEFS.menuActiveIndex ? 'active' : '' class=menuItem.className)
+              - if (menuItem.isIfSignedIn && isSigned || !menuItem.isIfSignedIn)
+                li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
                   a(href=menuItem.href )!= menuItem.title
       .bottom
         .copy!=`© 2018 ${COMPANY_NAME}`

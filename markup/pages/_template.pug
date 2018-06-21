@@ -6,11 +6,15 @@
 extends ../layouts/layout.pug
 
 append vars
-  - pageTitle = 'Новая страница'
-  - headerActiveIndex = -1;
+  -
+    setDefs({
+      pageTitle: 'Новая страница',
+      isSigned: false,
+      menuActiveIndex: -1
+    })
 
 
 block content
   +section()
-    h1!= pageTitle
+    h1!= DEFS.pageTitle
 

@@ -8,6 +8,9 @@
     menuActiveIndex: -1,
     menuProfileActiveIndex: -1,
     breadcrumbs: [],
+    keywords: '',
+    description: '',
+    isSocialMetaTags: false,
   };
 
   const MENU = [
@@ -54,3 +57,12 @@
       className: 'signout',
     },
   ]
+
+  function setDef(key, value) {
+    DEFS[key] = value;
+  }
+
+  function setDefs(src) {
+    Object.keys(src).forEach(function(key) { DEFS[key] = src[key]; });
+  }
+

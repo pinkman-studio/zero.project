@@ -7,9 +7,11 @@ extends ../layouts/layout.pug
 
 append vars
   -
-    DEFS.pageTitle = 'Карта сайта';
-    DEFS.isSigned = true;
-    DEFS.menuActiveIndex = 1;
+    setDefs({
+      pageTitle: 'Карта сайта',
+      isSigned: true,
+      menuActiveIndex: 1
+    })
 
 block content
   +section()

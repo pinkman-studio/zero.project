@@ -1,10 +1,12 @@
 mixin header(data = {})
   -
+    // Globals: SITE_TITLE, DEFS, MENU, MENU_PROFILE
+
     const {
-
-    } = data
-
-
+      menuProfileActiveIndex,
+      menuActiveIndex,
+      isSigned
+    } = DEFS;
 
   header.header
     +container()
@@ -13,9 +15,9 @@ mixin header(data = {})
 
         nav.profile
           ul.profile_nav
-            if DEFS.isSigned
+            if isSigned
               each profileMenuItem, index in MENU_PROFILE
-                li(class= index === DEFS.menuProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
+                li(class= index === menuProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
                     a(href=profileMenuItem.href )!= profileMenuItem.title
             else
               li.signin
@@ -28,7 +30,7 @@ mixin header(data = {})
           ul.menu_nav
             each menuItem, index in MENU
               if menuItem.isInHeader
-                li(class= index === DEFS.menuActiveIndex ? 'active' : '' class=menuItem.className)
+                li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
                   a(href=menuItem.href )!= menuItem.title
 
 
