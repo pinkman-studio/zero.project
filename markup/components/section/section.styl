@@ -1,10 +1,11 @@
 mixinSection()
 
-  $sectionOffsetVertical = 0
+  $sectionOffsetVertical = 4rem
   $sectionOffsetHorizontal = 2rem
-  $sectionOffsetVerticalMobile = 0
+  $sectionOffsetVerticalMobile = 2rem
   $sectionOffsetHorizontalMobile = 2rem
-  $sectionWidth = 120rem
+
+  $width = $sectionWidth
 
   .section
     &:last-child
@@ -26,7 +27,7 @@ mixinSection()
     .container
       margin 0 auto
       padding $sectionOffsetVertical $sectionOffsetHorizontal
-      width $sectionWidth
+      width $width
 
 
 

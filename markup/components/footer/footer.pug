@@ -3,8 +3,7 @@ mixin footer(data= {})
     // Globals: COMPANY_NAME, DEFS, MENU
 
     const {
-      menuActiveIndex,
-      isSigned
+      menuActiveIndex
     } = DEFS;
 
     const {
@@ -13,18 +12,19 @@ mixin footer(data= {})
 
   footer.footer(class=className)
     +container()
-      nav.menu
-        ul.menu_nav
-          each menuItem, index in MENU
-            if menuItem.isInFooter
-              - if (menuItem.isIfSignedIn && isSigned || !menuItem.isIfSignedIn)
-                li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
-                  a(href=menuItem.href )!= menuItem.title
-      .bottom
-        .copy!=`© 2018 ${COMPANY_NAME}`
-        a.agreement(href="#") Политика конфиденциальности
-      .create
-        a(href="http://pink-man.ru" target="_blank") Сайт сделал –
-          +svg({iconName: 'logo-pinkman'})
-
-
+      .row
+        .col-4.col-t-12
+          nav.menu
+            ul.menu_nav
+              each menuItem, index in MENU
+                if menuItem.isInFooter
+                  li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
+                    a(href=menuItem.href )!= menuItem.title
+        .col-4.col-t-6
+          .copyright
+            .copy!=`© 2018 ${COMPANY_NAME}`
+            a.agreement(href="#") Политика конфиденциальности
+        .col-4.col-t-6
+          .create
+            a(href="http://pink-man.ru" target="_blank") Сайт сделал –
+              +svg({iconName: 'logo-pinkman'})

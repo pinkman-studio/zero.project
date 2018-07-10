@@ -4,35 +4,15 @@ mixin header(data = {})
 
     const {
       menuProfileActiveIndex,
-      menuActiveIndex,
-      isSigned
+      menuActiveIndex
     } = DEFS;
 
   header.header
     +container()
-      .actions
-        a.logo(href="/")= SITE_TITLE
-
-        nav.profile
-          ul.profile_nav
-            if isSigned
-              each profileMenuItem, index in MENU_PROFILE
-                li(class= index === menuProfileActiveIndex ? 'active' : '' class=profileMenuItem.className)
-                    a(href=profileMenuItem.href )!= profileMenuItem.title
-            else
-              li.signin
-                a(href="#") Войти
-
-              li.signup
-                a(href="#") Зарегистрироваться
-
-        nav.menu
-          ul.menu_nav
-            each menuItem, index in MENU
-              if menuItem.isInHeader
-                li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
-                  a(href=menuItem.href )!= menuItem.title
-
-
-
-
+      a.logo(href="/")= SITE_TITLE
+      nav.menu
+        ul.menu_nav
+          each menuItem, index in MENU
+            if menuItem.isInHeader
+              li(class= index === menuActiveIndex ? 'active' : '' class=menuItem.className)
+                a(href=menuItem.href )!= menuItem.title
