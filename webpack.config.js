@@ -19,7 +19,7 @@ let preLoaders = [{
 }];
 let loaders = [{
 	test: /\.json$/,
-	loader: 'json'
+	loader: 'json-loader'
 }];
 let plugins = [
 	new webpack.DefinePlugin({

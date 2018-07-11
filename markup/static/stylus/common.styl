@@ -6,16 +6,7 @@ html
   font-family $font
   color $black
 
-// @media screen and (max-width: 767px) {
-//   html {
-//     font-size: calc(10px + 13 * (100vw - 320px) / 447);
-//   }
-// }
-// @media (min-width: 768px)  and (max-width: 1360px) {
-//   html {
-//     font-size: calc(5.6px + 4.4 * (100vw - 768px) / 592);
-//   }
-// }
+
 @media screen and (max-width: 767px)
   html
     font-size calc(10px + 13 * (100vw - 320px) / 447)
@@ -45,8 +36,9 @@ body
 
   font-size 1.4rem
   font-weight $regular
-  font-smoothing antialiased
+  text-rendering optimizeLegibility
   -webkit-font-smoothing antialiased
+  font-smoothing antialiased
 
 *
   box-sizing border-box
@@ -103,7 +95,7 @@ svg
   height 100%
   display block
 button
-  -webkit-appearance none
+  appearance none
   border none
   background-color transparent
 
