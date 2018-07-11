@@ -16,21 +16,17 @@ html
 //     font-size: calc(5.6px + 4.4 * (100vw - 768px) / 592);
 //   }
 // }
-@media screen and (max-width: 767px) {
-  html {
-    font-size: calc(10px + 13 * (100vw - 320px) / 447);
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  html {
-    font-size: calc(10px + 6 * (100vw - 768px) / 255);
-  }
-}
-@media (min-width: 1024px)  and (max-width: 1360px) {
-  html {
-    font-size: calc(8.5px + 1.5 * (100vw - 1024px) / 336);
-  }
-}
+@media screen and (max-width: 767px)
+  html
+    font-size calc(10px + 13 * (100vw - 320px) / 447)
+
+@media screen and (min-width: 768px) and (max-width: 1023px)
+  html
+    font-size calc(10px + 6 * (100vw - 768px) / 255)
+
+@media (min-width: 1024px)  and (max-width: 1360px)
+  html
+    font-size calc(8.5px + 1.5 * (100vw - 1024px) / 336)
 
 _:default:not(:root:root),
 html {
