@@ -10,6 +10,17 @@ font-face($font-name, $file-path, $weight = 'normal', $style = 'normal')
     font-weight unquote($weight)
     font-style unquote($style)
 
+font-face($font-name, $file-path, $weight = 'normal', $style = 'normal')
+
+  $url  = 'url("' + $file-path + '.woff2") format("woff2"), '
+  $url = $url + 'url("' + $file-path + '.woff") format("woff")'
+
+  @font-face
+    font-family $font-name
+    src unquote($url)
+    font-weight unquote($weight)
+    font-style unquote($style)
+
 m-nl()
     margin 0
     padding 0

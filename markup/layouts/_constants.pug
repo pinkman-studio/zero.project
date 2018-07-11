@@ -4,7 +4,6 @@
   const DEFS = {
     pageTitle: '',
     pageClass: '',
-    isSigned: false,
     menuActiveIndex: -1,
     menuProfileActiveIndex: -1,
     breadcrumbs: [],
@@ -45,19 +44,6 @@
 
   ];
 
-  const MENU_PROFILE = [
-    {
-      title: 'Мой профиль',
-      href: '/profile.html',
-      className: '',
-    },
-    {
-      title: 'Выйти',
-      href: '#',
-      className: 'signout',
-    },
-  ]
-
   function setDef(key, value) {
     DEFS[key] = value;
   }
@@ -65,4 +51,3 @@
   function setDefs(src) {
     Object.keys(src).forEach(function(key) { DEFS[key] = src[key]; });
   }
-

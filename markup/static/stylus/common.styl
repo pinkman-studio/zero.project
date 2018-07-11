@@ -6,12 +6,18 @@ html
   font-family $font
   color $black
 
-@media $mobile
+
+@media screen and (max-width: 767px)
   html
-    font-size: calc(10px + 13 * (100vw - 320px) / 447)
-@media (min-width: 768px)  and (max-width: 1360px)
+    font-size calc(10px + 13 * (100vw - 320px) / 447)
+
+@media screen and (min-width: 768px) and (max-width: 1023px)
   html
-    font-size: calc(5.6px + 4.4 * (100vw - 768px) / 592)
+    font-size calc(10px + 6 * (100vw - 768px) / 255)
+
+@media (min-width: 1024px)  and (max-width: 1360px)
+  html
+    font-size calc(8.5px + 1.5 * (100vw - 1024px) / 336)
 
 _:default:not(:root:root),
 html {
@@ -75,7 +81,6 @@ a
     text-decoration underline
 
 p
-  @extend .text--16
   margin 0
   & + p
     margin 2rem 0 0
@@ -93,94 +98,6 @@ button
   appearance none
   border none
   background-color transparent
-
-.color // a.i.
-  $size = 10rem
-  min-width $size
-  height $size
-  display: inline-block
-  // border-radius 50%
-  margin 0.5rem
-  padding 1rem
-  border 1px solid #0AE734
-
-// *** row ***
-  .row
-    display flex
-    flex-wrap wrap
-
-    &.ai-c
-      align-items center
-    &.ai-b
-      align-items flex-end
-    &.jc-sb
-      justify-content space-between
-    &.jc-c
-      justify-content center
-    &.jc-fe
-      justify-content flex-end
-    &.with-border + .with-border
-      $size = 2rem
-      border-top 1px solid rgba($white, 0.2)
-      padding-top 4rem
-      margin-top 4rem  - $size
-    >.col
-      flex-grow 1
-      flex-basis 0
-      max-width 100%
-      &.no-grow
-        flex-grow 0
-    >[class^=col-]
-      // for all col-constant
-      position relative
-      min-height 1px
-      width 100%
-
-  .col-12
-    flex 0 0 100%
-    max-width 100%
-  .col-10
-    flex 0 0 83.333333%
-    max-width 83.333333%
-  .col-9
-    flex 0 0 75%
-    max-width 75%
-  .col-8
-    flex 0 0 66.666667%
-    max-width 66.666667%
-  .col-7
-    flex 0 0 58.333333%
-    max-width 58.333333%
-  .col-6
-    flex 0 0 50%
-    max-width 50%
-  .col-5
-    flex 0 0 41.666667%
-    max-width 41.666667%
-  .col-4
-    flex 0 0 33.333333%
-    max-width 33.333333%
-  .col-3
-    flex 0 0 25%
-    max-width 25%
-  .col-2
-    flex 0 0 16.666667%
-    max-width 16.666667%
-  .col-1
-    flex 0 0 8.3333333%
-    max-width 8.3333333%
-
-
-@media $desktop
-  .row
-    &.p-40
-      $size = 2rem
-      margin - $size
-      >[class^=col]
-        padding $size
-      &.with-border + .with-border
-        padding-top 6rem
-        margin-top 6rem  - $size
 
 
 .visually_hidden
@@ -213,22 +130,3 @@ button
     margin -1px!important
     padding 0!important
     border 0!important
-
-
-@media $mobile
-  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12
-    flex 0 0 100%
-    max-width 100%
-  .row
-    &.p-40
-      $size = 2rem
-      margin 3.5rem 0 0
-      >[class^=col] + [class^=col]
-        margin-top 1.5rem
-
-  .page--ui //a.i.
-    [class^=col]
-      padding-top 0.5rem
-      padding-bottom 0.5rem
-
-
