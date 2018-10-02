@@ -95,3 +95,12 @@ anim-jump()
             transform translatey(-20%)
     animation jump 1s cubic-bezier(.65,-0.86,.69,.64) infinite
     animation-fill-mode backwards
+retina(src)
+  @media
+  only screen and (-webkit-min-device-pixel-ratio 2),
+  only screen and (   min--moz-device-pixel-ratio 2),
+  only screen and (     -o-min-device-pixel-ratio 2/1),
+  only screen and (        min-device-pixel-ratio 2),
+  only screen and (                min-resolution 192dpi),
+  only screen and (                min-resolution 2dppx)
+    background-image url(src)
